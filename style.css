@@ -1,0 +1,312 @@
+:root {
+    --gold: #d4af37;
+    --dark: #0a0a0a;
+    --white: #ffffff;
+    --grey: #f4f4f4;
+    --transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+body { font-family: 'Montserrat', sans-serif; background: var(--white); overflow-x: hidden; color: var(--dark); }
+
+/* Loader */
+#loader { position: fixed; inset: 0; background: var(--dark); z-index: 10000; display: flex; justify-content: center; align-items: center; transition: 0.5s; }
+.logo-loader { color: white; font-family: 'Playfair Display'; font-size: 2.5rem; letter-spacing: 10px; }
+.logo-loader span { color: var(--gold); }
+.progress-bar { width: 150px; height: 1px; background: rgba(255,255,255,0.1); margin-top: 20px; position: relative; overflow: hidden; }
+.progress-bar::after { content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 50%; background: var(--gold); animation: load 1.5s infinite; }
+@keyframes load { 0% { left: -50%; } 100% { left: 100%; } }
+
+/* Header */
+header { position: absolute; width: 100%; padding: 40px 8%; z-index: 100; }
+nav { display: flex; justify-content: space-between; align-items: center; }
+.logo { color: white; font-family: 'Playfair Display'; font-size: 1.8rem; font-weight: 700; letter-spacing: 2px; }
+.logo span { color: var(--gold); }
+nav ul { display: flex; list-style: none; gap: 30px; }
+nav ul li a { color: white; text-decoration: none; font-size: 0.75rem; text-transform: uppercase; letter-spacing: 2px; transition: 0.3s; }
+nav ul li a:hover { color: var(--gold); }
+
+/* Hero - Texto abaixado */
+.hero { 
+    height: 90vh; 
+    background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('img.0999.jpg'); 
+    background-size: cover; 
+    background-position: center; 
+    display: flex; 
+    align-items: flex-end; /* Alinha o conteúdo mais ao fundo */
+    padding-bottom: 15vh; /* Garante o respiro do topo */
+    justify-content: center; 
+    text-align: center; 
+    color: white; 
+}
+.hero-text span { font-size: 0.8rem; letter-spacing: 5px; text-transform: uppercase; color: var(--gold); }
+.hero-text h1 { font-family: 'Playfair Display'; font-size: clamp(2.5rem, 6vw, 4.5rem); margin: 15px 0; }
+.hero-text p { margin-bottom: 35px; font-weight: 300; opacity: 0.9; }
+
+.btn-primary, .btn-whatsapp { padding: 18px 35px; text-decoration: none; font-size: 0.75rem; letter-spacing: 2px; text-transform: uppercase; transition: var(--transition); display: inline-block; margin: 10px; }
+.btn-primary { background: white; color: var(--dark); }
+.btn-whatsapp { border: 1px solid white; color: white; }
+.btn-whatsapp:hover { background: #25d366; border-color: #25d366; }
+
+/* Grid de Produtos - Banners Menores */
+.catalog { padding: 100px 5%; background: var(--grey); }
+.section-title { font-family: 'Playfair Display'; font-size: 3rem; text-align: center; margin-bottom: 60px; }
+.grid-container { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; max-width: 1200px; margin: 0 auto; }
+
+.card { perspective: 1000px; }
+.card-inner { background: white; padding: 15px; border-radius: 12px; transition: var(--transition); box-shadow: 0 10px 30px rgba(0,0,0,0.05); }
+.card-img-container { height: 260px; width: 100%; overflow: hidden; border-radius: 8px; margin-bottom: 15px; }
+.card-img { height: 100%; width: 100%; background-size: cover; background-position: center; transition: 1s ease; }
+
+/* Hover com movimento 3D */
+.card:hover .card-inner { transform: translateY(-10px) rotateX(5deg) rotateY(-2deg); box-shadow: 0 20px 40px rgba(0,0,0,0.1); border: 1px solid var(--gold); }
+.card:hover .card-img { transform: scale(1.1); }
+
+.card-info { text-align: center; }
+.card-info small { font-size: 0.6rem; text-transform: uppercase; letter-spacing: 1px; color: #999; }
+.card-info h3 { font-family: 'Playfair Display'; font-size: 1.3rem; margin: 10px 0; }
+.price { color: var(--gold); font-weight: 700; font-size: 1.2rem; margin-bottom: 15px; }
+.buy-link { display: block; background: var(--dark); color: white; text-decoration: none; padding: 12px; border-radius: 6px; font-size: 0.7rem; font-weight: 600; text-transform: uppercase; transition: 0.3s; }
+.buy-link:hover { background: var(--gold); }
+
+/* Rodapé Impactante */
+.premium-footer { background: #000; color: white; padding: 100px 5% 40px; text-align: center; position: relative; overflow: hidden; }
+.footer-glow { position: absolute; inset: 0; background: radial-gradient(circle at top, rgba(212, 175, 55, 0.1), transparent 70%); }
+.footer-logo { font-family: 'Playfair Display'; font-size: 3rem; letter-spacing: 8px; margin-bottom: 20px; }
+.footer-logo span { color: var(--gold); }
+.footer-cta-box { border: 1px solid rgba(212, 175, 55, 0.3); padding: 40px; max-width: 600px; margin: 40px auto; border-radius: 20px; background: rgba(255,255,255,0.02); backdrop-filter: blur(10px); }
+.btn-footer { display: inline-block; background: var(--gold); color: white; text-decoration: none; padding: 15px 40px; border-radius: 50px; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; margin-top: 20px; transition: 0.4s; }
+.btn-footer:hover { transform: scale(1.05); background: white; color: black; }
+.footer-bottom { margin-top: 60px; padding-top: 30px; border-top: 1px solid rgba(255,255,255,0.1); display: flex; justify-content: space-between; font-size: 0.75rem; color: #555; }
+.footer-socials a { color: #555; text-decoration: none; margin-left: 20px; }
+
+@media (max-width: 1024px) { .grid-container { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 768px) { .grid-container { grid-template-columns: 1fr; } .hero { align-items: center; padding-bottom: 0; } } 
+/* --- BOTÃO INSTAGRAM NO MENU --- */
+.insta-btn-nav {
+    background: linear-gradient(45deg, #f09433 0%, #e6683c 25%, #dc2743 50%, #cc2366 75%, #bc1888 100%);
+    padding: 8px 20px !important; /* Espaçamento interno */
+    border-radius: 50px; /* Bordas arredondadas estilo pílula */
+    font-weight: 700 !important;
+    color: white !important;
+    box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3); /* Sombra suave colorida */
+    transition: var(--transition) !important;
+}
+
+.insta-btn-nav:hover {
+    transform: translateY(-3px) scale(1.05); /* Sobe levemente */
+    box-shadow: 0 6px 20px rgba(220, 39, 67, 0.5); /* Aumenta o brilho no hover */
+    filter: brightness(1.1); /* Dá uma leve clareada */
+}
+
+/* Ajuste para o texto não ficar colado no menu em telas menores */
+@media (max-width: 768px) {
+    nav ul {
+        gap: 15px;
+    }
+    .insta-btn-nav {
+        padding: 6px 15px !important;
+        font-size: 0.7rem !important;
+    }
+} /* --- NOVO LOADER SLOW-MOTION --- */
+/* --- CONFIGURAÇÃO DO LOADER --- */
+#loader {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000; /* Fundo inicial */
+    overflow: hidden;
+}
+
+/* Camadas que sobem no final */
+.loader-layer {
+    position: absolute;
+    inset: 0;
+    transform: translateY(0);
+    transition: transform 1.2s cubic-bezier(0.85, 0, 0.15, 1);
+}
+
+.layer-dark { background: #0a0a0a; z-index: 2; }
+.layer-gold { background: var(--gold); z-index: 1; }
+
+.loader-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+}
+
+/* Efeito de Revelação da Logo */
+.logo-reveal-container {
+    position: relative;
+    overflow: hidden;
+    padding: 10px 0;
+}
+
+.logo-loader {
+    color: white;
+    font-family: 'Playfair Display';
+    font-size: 3.5rem;
+    letter-spacing: 15px;
+    font-weight: 700;
+    transform: translateY(110%);
+    animation: revealLogo 1.5s forwards cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.logo-loader span { color: var(--gold); }
+
+/* Linha animada abaixo da logo */
+.logo-line {
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    margin: 10px auto 0;
+    animation: extendLine 1s forwards 0.8s;
+}
+
+.loader-subtitle {
+    color: rgba(255,255,255,0.4);
+    font-size: 0.7rem;
+    text-transform: uppercase;
+    letter-spacing: 5px;
+    margin-top: 15px;
+    opacity: 0;
+    animation: fadeIn 1s forwards 1.2s;
+}
+
+/* --- ESTADOS DE SAÍDA (QUANDO TERMINA) --- */
+#loader.finished .layer-dark {
+    transform: translateY(-100%);
+}
+
+#loader.finished .layer-gold {
+    transform: translateY(-100%);
+    transition-delay: 0.15s; /* O dourado sobe logo atrás */
+}
+
+#loader.finished .loader-content {
+    opacity: 0;
+    transform: translateY(-50px);
+    transition: all 0.8s ease;
+}
+
+/* --- KEYFRAMES --- */
+@keyframes revealLogo {
+    to { transform: translateY(0); }
+}
+
+@keyframes extendLine {
+    to { width: 60%; }
+}
+
+@keyframes fadeIn {
+    to { opacity: 1; }
+}
+
+/* BOTÃO INSTAGRAM DEGRADÊ */
+.insta-btn-nav {
+    background: linear-gradient(45deg, #f09433, #e6683c, #dc2743, #cc2366, #bc1888);
+    padding: 10px 25px !important;
+    border-radius: 50px;
+    color: white !important;
+    font-weight: 700 !important;
+    box-shadow: 0 4px 15px rgba(220, 39, 67, 0.3);
+    transition: 0.4s !important;
+}
+
+.insta-btn-nav:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.1);
+    box-shadow: 0 6px 20px rgba(220, 39, 67, 0.5);
+} /* --- CONFIGURAÇÃO DO LOADER --- */
+/* --- LOADER ULTRA LUXO (VERSÃO LENTA) --- */
+#loader {
+    position: fixed;
+    inset: 0;
+    z-index: 10000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #000;
+    overflow: hidden;
+}
+
+.loader-layer {
+    position: absolute;
+    inset: 0;
+    transform: translateY(0);
+    /* Transição de saída muito lenta (2 segundos) */
+    transition: transform 2s cubic-bezier(0.77, 0, 0.175, 1);
+}
+
+.layer-dark { background: #0a0a0a; z-index: 2; }
+.layer-gold { background: var(--gold); z-index: 1; }
+
+.loader-content {
+    position: relative;
+    z-index: 10;
+    text-align: center;
+}
+
+.logo-reveal-container {
+    position: relative;
+    overflow: hidden;
+    padding: 10px 0;
+}
+
+.logo-loader {
+    color: white;
+    font-family: 'Playfair Display';
+    font-size: 3.5rem;
+    letter-spacing: 20px; /* Mais espaçamento para elegância */
+    font-weight: 700;
+    transform: translateY(110%);
+    /* A logo sobe em 2.5 segundos */
+    animation: revealLogo 2.5s forwards 0.5s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+.logo-loader span { color: var(--gold); }
+
+.logo-line {
+    width: 0;
+    height: 1px;
+    background: var(--gold);
+    margin: 15px auto 0;
+    /* A linha demora 2 segundos para completar */
+    animation: extendLine 2s forwards 1.5s ease-in-out;
+}
+
+.loader-subtitle {
+    color: rgba(255,255,255,0.3);
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 8px;
+    margin-top: 25px;
+    opacity: 0;
+    /* Aparece suavemente no final */
+    animation: fadeIn 2s forwards 2.5s;
+}
+
+/* --- ANIMAÇÃO DE SAÍDA --- */
+#loader.finished .layer-dark {
+    transform: translateY(-100%);
+    transition-delay: 0.2s;
+}
+
+#loader.finished .layer-gold {
+    transform: translateY(-100%);
+    transition-delay: 0.5s; /* O dourado demora um pouco mais para subir */
+}
+
+#loader.finished .loader-content {
+    opacity: 0;
+    transform: translateY(-30px);
+    transition: all 1.5s ease;
+}
+
+@keyframes revealLogo { to { transform: translateY(0); } }
+@keyframes extendLine { to { width: 100px; } }
+@keyframes fadeIn { to { opacity: 1; } } 
+/* Ajuste na animação da logo para ser mais contemplativa */
